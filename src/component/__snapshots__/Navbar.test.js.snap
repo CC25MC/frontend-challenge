@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar tests Should render correctly 1`] = `
+<div>
+  <nav
+    class="navbar navbar-expand navbar-dark bg-dark"
+  >
+    <div
+      class="container"
+    >
+      <span
+        class="navbar-brand"
+      >
+        Test Challange
+      </span>
+      <button
+        aria-label="Toggle navigation"
+        class="navbar-toggler collapsed"
+        type="button"
+      >
+        <span
+          class="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        class="justify-content-end navbar-collapse collapse"
+      >
+        <div
+          class="dropdown"
+        >
+          <button
+            aria-expanded="false"
+            class="dropdown-toggle btn btn-danger"
+            id="dropdown-basic"
+            type="button"
+          >
+            1
+             Notifications
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`Navbar tests Should show the error notification 1`] = `
+<div>
+  <nav
+    class="navbar navbar-expand navbar-dark bg-dark"
+  >
+    <div
+      class="container"
+    >
+      <span
+        class="navbar-brand"
+      >
+        Test Challange
+      </span>
+      <button
+        aria-label="Toggle navigation"
+        class="navbar-toggler collapsed"
+        type="button"
+      >
+        <span
+          class="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        class="justify-content-end navbar-collapse collapse"
+      >
+        <div
+          class="dropdown"
+        >
+          <button
+            aria-expanded="false"
+            class="dropdown-toggle btn btn-danger"
+            id="dropdown-basic"
+            type="button"
+          >
+            1
+             Notifications
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

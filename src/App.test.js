@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from './App';
+import { Provider } from "react-redux";
+import { store } from "./redux";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App tests", () => {
+  it("renders without crashing", () => {
+    const component = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+    component.getByText("Full Stack Challenge");
+    expect(component.container).toMatchSnapshot();
+  });
 });
+
