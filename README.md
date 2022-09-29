@@ -1,4 +1,4 @@
-# Frontend Challenge
+# ✨ Frontend Challenge ✨
 
 ## How to run it?
 
