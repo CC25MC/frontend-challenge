@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFiles, getListFiles, getFile, setFile } from "./redux/slices";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -13,17 +14,24 @@ const App = () => {
     error = [],
     files = [],
     file,
+    serverStatus,
   } = useSelector((state) => state.files);
 
   useEffect(() => {
     dispatch(getFiles());
     dispatch(getListFiles());
   }, [dispatch]);
-
+  
   return (
     <>
       <NavbarB title="Full Stack Challenge" filesError={error} />
       <div className="mt-4 px-5">
+        {serverStatus === "INACTIVE" && (
+          <Alert variant={"danger"}>
+            The server is off, turn it on to test it.
+          </Alert>
+        )}
+
         <Form.Select
           aria-label="selec file"
           value={file}
@@ -41,26 +49,24 @@ const App = () => {
           ))}
         </Form.Select>
         <div className="mt-3" />
-      </div>
 
-      {isLoading ? (
-        <div
-          style={{
-            display: "flex",
-            textAlign: "center",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-            height: "80vh",
-          }}
-        >
-          <Spinner animation="grow" />
-        </div>
-      ) : (
-        <div className="mt-4 px-5">
-          <TableB data={dataFiles}/>
-        </div>
-      )}
+        {isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              textAlign: "center",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "80vh",
+            }}
+          >
+            <Spinner animation="grow" />
+          </div>
+        ) : (
+          <TableB data={dataFiles} />
+        )}
+      </div>
     </>
   );
 };

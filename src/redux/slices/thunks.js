@@ -1,5 +1,10 @@
 import request from "../../api";
-import { startLoading, setDataFiles, setFiles } from "./filesSlice";
+import {
+  startLoading,
+  setDataFiles,
+  setFiles,
+  setServerStatus,
+} from "./filesSlice";
 
 export const getFiles = () => {
   return async (dispatch) => {
@@ -7,7 +12,11 @@ export const getFiles = () => {
 
     const data = await request.files.getFiles();
 
-    dispatch(setDataFiles(data));
+    if (data.message === "Network Error") {
+      dispatch(setServerStatus("INACTIVE"));
+    } else {
+      dispatch(setDataFiles(data));
+    }
   };
 };
 
@@ -30,7 +39,11 @@ export const getFile = (filename) => {
     } else {
       const data = await request.files.getFiles();
 
-      dispatch(setDataFiles(data));
+      if (data.message === "Network Error") {
+        dispatch(setServerStatus("INACTIVE"));
+      } else {
+        dispatch(setDataFiles(data));
+      }
     }
   };
 };

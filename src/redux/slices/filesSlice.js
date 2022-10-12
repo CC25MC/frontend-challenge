@@ -7,6 +7,7 @@ export const filesSlice = createSlice({
     files: [],
     dataFiles: [],
     error: [],
+    serverStatus: "ACTIVE",
     isLoading: false,
   },
   reducers: {
@@ -24,9 +25,18 @@ export const filesSlice = createSlice({
       state.dataFiles = action.payload.files;
       state.error = action.payload?.filesError || [];
     },
+    setServerStatus: (state, action) => {
+      state.isLoading = false;
+      state.serverStatus = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { startLoading, setFiles, setDataFiles, setFile } =
-  filesSlice.actions;
+export const {
+  startLoading,
+  setFiles,
+  setDataFiles,
+  setFile,
+  setServerStatus,
+} = filesSlice.actions;

@@ -7,7 +7,12 @@ const endpoints = {
 };
 
 export const getFiles = async () => {
-  const res = await request.get(endpoints.getFiles);
+  let error = {};
+  const res = await request.get(endpoints.getFiles).catch((err) => {
+    error = err.toJSON();
+  });
+  if (error?.message) return error;
+  
   return res.data;
 };
 export const getFile = async (filename) => {
